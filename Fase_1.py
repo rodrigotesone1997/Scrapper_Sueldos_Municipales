@@ -5,7 +5,7 @@
 
 # ### Importo los paquetes
 
-# In[1]:
+# In[ ]:
 
 
 import os # Funciones para interactuar con el sistema operativo
@@ -26,7 +26,7 @@ import numpy as np # Funcionalidad para listas y matrices de una manera mas efic
 
 # ### Obtengo los url para la descarga
 
-# In[2]:
+# In[ ]:
 
 
 # La función URL recibe un url de tipo string y develve una variable soup.Entre sus atributos se
@@ -50,8 +50,9 @@ Cuarto, uso expresiones regulares para extraer los url necesarios para la descar
 lista
 '''
 
-# print(soup.prettify()) Si te interesa ver como queda el el html extraido podes decomentar esta linea
-# de código
+# print(soup.prettify())
+# Si te interesa ver como queda el el html extraido podes decomentar la linea de arriba código
+ 
 pagina_sueldos="https://www.rosario.gob.ar"
 lista_enlaces=[]
 
@@ -80,7 +81,7 @@ path_local="C:/Users/jorge/Proyectos/Gasto_Publico_Argentino_files"
 
 # ### Descarga de pdf's
 
-# In[3]:
+# In[ ]:
 
 
 '''
@@ -102,14 +103,14 @@ for url in lista_enlaces:
 
 # ### Veo cuantas carpetas de pdf tengo actualmente
 
-# In[4]:
+# In[ ]:
 
 
 url_folder_pdf=path_local+"/Salarios_Rosario/pdf"
 list_folder=os.listdir(url_folder_pdf)
 
 
-# In[5]:
+# In[ ]:
 
 
 '''
@@ -122,7 +123,7 @@ for i in list_folder:
         list_folder.remove(i)
 
 
-# In[6]:
+# In[ ]:
 
 
 Meses=["ENERO",
@@ -139,7 +140,7 @@ Meses=["ENERO",
       "DICIEMBRE"]
 
 
-# In[8]:
+# In[ ]:
 
 
 '''
@@ -173,7 +174,7 @@ for i in os.listdir(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos"):
             pass
 
 
-# In[9]:
+# In[ ]:
 
 
 '''
@@ -225,7 +226,7 @@ else:
     pass
 
 
-# In[10]:
+# In[ ]:
 
 
 '''
@@ -246,7 +247,7 @@ except:
     cambio=None
 
 
-# In[12]:
+# In[ ]:
 
 
 '''
@@ -261,6 +262,8 @@ try:
     traduccion=result.capitalize()
     datetime_object=datetime.datetime.strptime(re.sub(" ","",traduccion),"%B")
     mes_nuevo=str(datetime_object.month)
+    if len(mes_nuevo)==1:
+        mes_nuevo="0"+mes_nuevo
 #     print(result)
 #     print(traduccion)
 #     print(datetime_object)
@@ -269,13 +272,13 @@ except:
     pass
 
 
-# In[13]:
+# In[ ]:
 
 
 Actualizacion=str(date.today().strftime("%Y-%m-%d"))
 
 
-# In[14]:
+# In[ ]:
 
 
 '''
