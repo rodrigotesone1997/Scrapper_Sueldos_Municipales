@@ -278,6 +278,21 @@ except:
 Actualizacion=str(date.today().strftime("%Y-%m-%d"))
 
 
+# # Funcion para convertir una carpeta a ".zip"
+
+# In[ ]:
+
+
+def make_archive(source, destination):
+        base = os.path.basename(destination)
+        name = base.split('.')[0]
+        format = base.split('.')[1]
+        archive_from = os.path.dirname(source)
+        archive_to = os.path.basename(source.strip(os.sep))
+        shutil.make_archive(name, format, archive_from, archive_to)
+        shutil.move('%s.%s'%(name,format), destination)
+
+
 # In[ ]:
 
 
@@ -314,9 +329,26 @@ else:
     file=open(path_local+"/Seguimiento.txt","a")
     file.write(f"\n{Actualizacion}: Hubo un cambio de algunos archivos pero no se han cambiado todos")
     file.close()
+
+make_archive(path_local, path_local+".zip")
+# Esta linea mueve el .zip creado a la carpeta donde tengo inicializado el repositorio
+# Si se clono el repositorio va a pasar directamente al except
+try:
+    shutil.move(path_local+".zip",r"C:\Users\jorge\Proyectos\Fase_1")
+except:
+    pass
+
 try:
     shutil.rmtree(path_local+"/Salarios_Rosario/imagenes")
     os.remove(path_local+'/Salarios_Rosario/imagen_vieja.jpg')
 except:
     pass
+
+
+# # Abro el archvivo "Seguimiento.txt" para ver el resultado del proceso
+
+# In[ ]:
+
+
+os.startfile(path_local+"/Seguimiento.txt")
 
