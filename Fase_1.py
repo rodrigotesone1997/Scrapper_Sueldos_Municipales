@@ -332,9 +332,10 @@ else:
 
 make_archive(path_local, path_local+".zip")
 # Esta linea mueve el .zip creado a la carpeta donde tengo inicializado el repositorio
-# Si se clono el repositorio va a pasar directamente al except
+# Si se clono el repositorio en otra maquina va a pasar directamente al except
 try:
-    shutil.move(path_local+".zip",r"C:\Users\jorge\Proyectos\Fase_1")
+    shutil.remove(r"C:\Users\jorge\Proyectos\Proyectos Terminados\Fase_1\Gasto_Publico_Argentino_files.zip")
+    shutil.move(path_local+".zip",r"C:\Users\jorge\Proyectos\Proyectos Terminados\Fase_1\Gasto_Publico_Argentino_files.zip")
 except:
     pass
 
