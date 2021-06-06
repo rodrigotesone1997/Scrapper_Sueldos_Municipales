@@ -33,9 +33,9 @@ Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pd
 5. Revisar el código en caso de necesitar comentar algunas lineas (mas información comentada en el código)
 6. Por último, ejecutarlo
 
-## 
+## Contacto
 
-Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail a rodrigotesone1997@outlook.com.ar
+Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail a rodrigotesone97@outlook.com.ar
 
 ## Author
 
@@ -49,7 +49,7 @@ Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail 
 -->
 ## 🤝 Contributing
 
-Agrdezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto , a [Alejandro](https://github.com/alexdraven) la revisión de código y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
+Agradezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto , a [Alejandro](https://github.com/alexdraven) la revisión del código y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
 
 
 ## 📝 License
