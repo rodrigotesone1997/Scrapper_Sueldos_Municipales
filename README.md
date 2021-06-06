@@ -14,7 +14,7 @@
 
 ### 🏠 Clonar Reposotorio
 
-> `git clone https://github.com/rodrigotesone1997/GPR.git`
+> `git clone https://github.com/rodrigotesone1997/Scrapper_Sueldos_Minucipales.git`
 
 ## Install
 Ademas de los requerimientos que estan [aquí](requirements.txt) es posible que surga el siguiente error al momento de uso:
