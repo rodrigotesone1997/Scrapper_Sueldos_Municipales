@@ -44,6 +44,7 @@ def URL(url):
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
 
+    
 
 URL("https://www.rosario.gob.ar/web/gobierno/personal/sueldos")
 
@@ -237,13 +238,13 @@ if len(np.unique(np.array(lista_mes)))==1:
         except:
             pass
 else:
+    pass
 '''
 Esto es una idea para hacer un poco mas preciso el código pero no lo pense de momento
 Faltaria resolver esta parte que basicamente seria obtener cuales archivos son nuevos y cuales viejos
 Recordemos que si llego a este bloque de código es porque hay mix de archivos viejos y archivos nuevos
 Quiza deba dejar por defecto una carpeta con las imagenes de la portada de la anterior carpeta de pdf (2021_03_Sueldos en este caso)
 '''
-    pass
 
 
 # In[ ]:
