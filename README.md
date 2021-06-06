@@ -12,7 +12,7 @@
 > En caso de que se actualizen se incorporan en una nueva carpeta con el siguiente formato: "Año_Mes_Sueldos".<br/>
 > Finalmente abre el archivo "Seguimiento.txt" para ver que transcurrio en el proceso (Si hubo o no hubo cambio de archivos)
 
-### 🏠 [Clonar Reposotorio]()
+### 🏠 Clonar Reposotorio
 
 > `git clone https://github.com/rodrigotesone1997/GPR.git`
 
@@ -28,6 +28,14 @@ Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pd
 
 1. (Opcional) Crear un entorno virtual `virtualenv` y activarlo.
 2. Instalar las depedencias `pip install -r requirements.txt`
+3. Descomprimir el [.zip](Gasto_Publico_Argentino_files.zip)
+4. Reemplazar el path de "Gasto_Publico_Argentino_files" dentro de la variable `path_local` del programa
+5. Revisar el código en caso de necesitar comentar algunas lineas (mas información comentada en el código)
+6. Por último, ejecutarlo
+
+## 
+
+Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail a rodrigotesone1997@outlook.com.ar
 
 ## Author
 
@@ -36,12 +44,12 @@ Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pd
 <!---* Website: xadec
 -->
 * Twitter: [@rodrigotesone97](https://twitter.com/rodrigotesone97?s=08)
-* Github: [Yo](https://github.com/rodrigotesone1997)
+* Github: [rodrigotesone1997](https://github.com/rodrigotesone1997)
 <!---* LinkedIn: [@ff](https://linkedin.com/in/ff)
 -->
 ## 🤝 Contributing
 
-Agrdezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto ,a  [Alejandro](https://github.com/alexdraven) la revisión de código y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
+Agrdezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto , a [Alejandro](https://github.com/alexdraven) la revisión de código y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
 
 
 ## 📝 License
