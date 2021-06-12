@@ -37,9 +37,13 @@ Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pd
 1. (Opcional) Crear un entorno virtual `virtualenv` y activarlo.
 2. Instalar las depedencias `pip install -r requirements.txt`
 3. Descomprimir el [.zip](Gasto_Publico_Argentino_files.zip)
-4. Reemplazar el path de "Gasto_Publico_Argentino_files" dentro de la variable `path_local` del programa
+4. Reemplazar el path de "Gasto_Publico_Argentino_files" dentro de la variable `path_local` del script [Fase_1.py](Fase_1.py)
 5. Revisar el código en caso de necesitar comentar algunas lineas (mas información comentada en el código)
-6. Por último, ejecutarlo
+6. Por último, ejecutar [Fase_1.py](Fase_1.py)
+
+## 🔮 Futuro del Proyecto
+
+Proximamente publicare un repositorio que seria la "Fase 2" del proyecto donde se crearia una carpeta donde se limpiarian los datos en pdf a archivos .xlsx
 
 ## ✉️ Contacto
 
