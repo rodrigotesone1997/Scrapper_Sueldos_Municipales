@@ -55,7 +55,7 @@ Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail 
 * Github: [rodrigotesone1997](https://github.com/rodrigotesone1997)
 <!---* LinkedIn: [@ff](https://linkedin.com/in/ff)
 -->
-## 🤝 Contributing y Agradecimientos
+## 🤝 Contribuciones y Agradecimientos
 
 Agradezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto , a [Alejandro](https://github.com/alexdraven) la revisión del código, a mi hermana pequeña por la selección de emojis 😉 y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
 
