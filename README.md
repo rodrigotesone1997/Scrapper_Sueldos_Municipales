@@ -12,11 +12,19 @@
 > En caso de que se actualizen se incorporan en una nueva carpeta con el siguiente formato: "Año_Mes_Sueldos".<br/>
 > Finalmente abre el archivo "Seguimiento.txt" para ver que transcurrio en el proceso (Si hubo o no hubo cambio de archivos)
 
-### 🏠 Clonar Reposotorio
+## 📂 Clonar Reposotorio
 
-> `git clone https://github.com/rodrigotesone1997/Scrapper_Sueldos_Municipales.git`
+```
+git clone https://github.com/rodrigotesone1997/Scrapper_Sueldos_Municipales.git
+```
 
-## Install
+## 🐍 Versión de Python
+
+```
+Python 3.8.8
+```
+
+## 👨‍💻 Instalación
 Ademas de los requerimientos que estan [aquí](requirements.txt) es posible que surga el siguiente error al momento de uso:
 ```
 TesseractNotFound Error: tesseract is not installed or it's not in your path
@@ -24,7 +32,7 @@ TesseractNotFound Error: tesseract is not installed or it's not in your path
 En ese caso se recomienda seguir el siguiente [video](https://www.youtube.com/watch?v=DG5D8A3zi4o&ab_channel=MotechApp).
 Para usuarios Windows el paquete `pdf2image` necesita la descarga del ejecutable ubicado [aquí](https://github.com/oschwartz10612/poppler-windows/releases/).
 Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pdf-to-image-using-python/
-## Usage
+## ⚙️ Uso
 
 1. (Opcional) Crear un entorno virtual `virtualenv` y activarlo.
 2. Instalar las depedencias `pip install -r requirements.txt`
@@ -33,11 +41,11 @@ Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pd
 5. Revisar el código en caso de necesitar comentar algunas lineas (mas información comentada en el código)
 6. Por último, ejecutarlo
 
-## Contacto
+## ✉️ Contacto
 
 Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail a rodrigotesone97@outlook.com.ar
 
-## Author
+## 🤔 Autor
 
 👤 **Rodrigo Tesone**
 
@@ -47,12 +55,12 @@ Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail 
 * Github: [rodrigotesone1997](https://github.com/rodrigotesone1997)
 <!---* LinkedIn: [@ff](https://linkedin.com/in/ff)
 -->
-## 🤝 Contributing
+## 🤝 Contributing y Agradecimientos
 
-Agradezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto , a [Alejandro](https://github.com/alexdraven) la revisión del código y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
+Agradezco a [Bautista](https://github.com/coltking) por la motivación e ideas al proyecto , a [Alejandro](https://github.com/alexdraven) la revisión del código, a mi hermana pequeña por la selección de emojis 😉 y a la Municipalidad de Rosario por publicar tan pauperrimamente sus datos y obligarme a hacer esto.
 
 
-## 📝 License
+## 📝 Licencia
 
 Copyright © 2021 [Rodrigo](https://github.com/rodrigotesone1997).<br />
 This project is [MIT](LICENSE) licensed.
