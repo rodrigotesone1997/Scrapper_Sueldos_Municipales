@@ -10,7 +10,9 @@
 
 > El repositorio consta de un script que scrapea la pagina web de la [Municipalidad de Rosario](https://www.rosario.gob.ar/web/gobierno/personal/sueldos), descarga los pdf que contienen los sueldos dentro de ella, verifica si son iguales a la última actualización disponible en la carpeta pdf de este [archivo](Gasto_Publico_Argentino_files.zip).<br/>
 > En caso de que se actualizen se incorporan en una nueva carpeta con el siguiente formato: "Año_Mes_Sueldos".<br/>
-> Si hubo un cambio respecto a la ultima revision (es decir, si se agregaron nuevos documentos) me envia un mail notificandome.
+> Si hubo un cambio respecto a la ultima revision (es decir, si se agregaron nuevos documentos) me envia un mail notificandome.</br></br>
+
+![Demo](Demo.jpeg)
 
 ## 📂 Clonar Reposotorio
 
