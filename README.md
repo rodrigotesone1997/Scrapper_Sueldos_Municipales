@@ -34,15 +34,25 @@ TesseractNotFound Error: tesseract is not installed or it's not in your path
 ```
 En ese caso se recomienda seguir el siguiente [video](https://www.youtube.com/watch?v=DG5D8A3zi4o&ab_channel=MotechApp).</br>
 El paquete `pdf2image` necesita la descarga del ejecutable ubicado [aquí](https://github.com/oschwartz10612/poppler-windows/releases/).
-Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pdf-to-image-using-python/
+Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pdf-to-image-using-python/ .
 
 #### 🐧 Usuarios Linux:
 
-Para usuarios Linux se necesita instalar `tesseract-ocr` con el siguiente comando:
+Asi lo instale en Ubuntu 20.04 pero por lo que vi es similar en otras distros.</br>.
+Se necesita instalar `tesseract-ocr` con el siguiente comando:
 ```
 apt-get install tesseract-ocr
 ```
-
+Luego instalar:
+```
+apt-get install tesseract-ocr-EN
+```
+EN debe ser reemplazado por el idioma para el que quieras utilizarlo.En este caso es español:
+```
+apt-get install tesseract-ocr-spa
+```
+Aunque yo recomiendo usar `apt-get install tesseract-ocr-all` asi podes usarlo sin restricciones.</br>
+Informacion sobre la instalacion [aca](https://linuxhint.com/install-tesseract-ocr-linux/) y sobre la instalacion de español [aca](https://parzibyte.me/blog/2019/05/18/instalar-tesseract-ocr-idioma-espanol-ubuntu/).
 ## ⚙️ Uso
 
 1. (Opcional) Crear un entorno virtual `virtualenv` y activarlo.
