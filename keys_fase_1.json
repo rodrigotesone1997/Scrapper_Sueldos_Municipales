@@ -1,0 +1,5 @@
+{
+"sender_address":"usuario que envia el mail",
+"sender_pass":"contraseña de ese mail",
+"receiver_address":"usuario a quien enviar el mail"
+}

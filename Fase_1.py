@@ -3,16 +3,16 @@
 
 # # Fase 1
 
-# In[ ]:
+# In[1]:
 
 
 from datetime import datetime
-print("El código comenzo a correr a las: ",datetime.now())
+Inicio_programa=datetime.now()
 
 
 # ### Importo los paquetes
 
-# In[ ]:
+# In[2]:
 
 
 import os # Funciones para interactuar con el sistema operativo
@@ -27,13 +27,17 @@ import pytesseract # Habilita funciones para extraer texto de imagenes
 from PIL import Image # Función para manejo de imagenes
 import shutil # Funciones para interctuar con el sistema operativo que no tiene os
 import datetime
-from google_trans_new import google_translator # Funcionalidades para traducir un texto de un idioma a otro
 import numpy as np # Funcionalidad para listas y matrices de una manera mas eficiente
+from natsort import natsorted # Funcionalidad para ordenar folder
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib # Funciones para mandar mail
+import json
 
 
 # ### Obtengo los url para la descarga
 
-# In[ ]:
+# In[3]:
 
 
 # La función URL recibe un url de tipo string y develve una variable soup.Entre sus atributos se
@@ -43,8 +47,6 @@ def URL(url):
     global soup 
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
-
-    
 
 URL("https://www.rosario.gob.ar/web/gobierno/personal/sueldos")
 
@@ -60,7 +62,7 @@ lista
 
 # print(soup.prettify())
 # Si te interesa ver como queda el el html extraido podes decomentar la linea de arriba código
- 
+
 pagina_sueldos="https://www.rosario.gob.ar"
 lista_enlaces=[]
 
@@ -79,17 +81,17 @@ for i in range(0,len(tag_class)):
 
 # ### Pongo el path donde esta ubicado la carpeta "Gasto_Publico_Argentino_files"
 
-# In[ ]:
+# In[4]:
 
 
 # Se tiene que reemplazar por el path en tu maquina local
 
-path_local="C:/Users/jorge/Proyectos/Gasto_Publico_Argentino_files"
+path_local="path/Gasto_Publico_Argentino_files"
 
 
 # ### Descarga de pdf's
 
-# In[ ]:
+# In[5]:
 
 
 '''
@@ -111,14 +113,14 @@ for url in lista_enlaces:
 
 # ### Veo cuantas carpetas de pdf tengo actualmente
 
-# In[ ]:
+# In[6]:
 
 
 url_folder_pdf=path_local+"/Salarios_Rosario/pdf"
-list_folder=os.listdir(url_folder_pdf)
+list_folder=natsorted(os.listdir(url_folder_pdf))
 
 
-# In[ ]:
+# In[7]:
 
 
 '''
@@ -131,7 +133,7 @@ for i in list_folder:
         list_folder.remove(i)
 
 
-# In[ ]:
+# In[8]:
 
 
 Meses=["ENERO",
@@ -164,22 +166,37 @@ except:
     pass
 
 lista_mes=[]
-'''
-En caso de no haber descargado el ejecutable comentar las siguientes paginas 2 líneas de código.
-En caso de tenerlo instalado cambiar el path por el de tu maquina.
-'''
-
-path_tesseract_exe=r"C:\Users\jorge\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
-pytesseract.pytesseract.tesseract_cmd=path_tesseract_exe
 
 '''
-Si no se descargo el ejecutable asociado a pdf2image comentar la siguiente linea.
+En caso de haber descargado el ejecutable descomentar las siguientes 2
+líneas de código.
+En caso de tenerlo instalado cambiar path_tesseract_exe por la ubicacion del ejecutable
+de tu maquina.
 '''
-poppler_path_local= r"C:\Program Files (x86)\poppler-21.03.0\Library\bin"
+
+# path_tesseract_exe="path/tesseract.exe"
+# pytesseract.pytesseract.tesseract_cmd=path_tesseract_exe
+
+'''
+Si se descargo el ejecutable asociado a pdf2image descomentar la siguiente linea.
+'''
+
+# poppler_path_local= "C:/Program Files (x86)/poppler-21.03.0/Library/bin"
+
+
+# Tambien descomentar la linea que corresponda a su sistema operativo para la variable primera_hoja.
 
 for i in os.listdir(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos"):
     path_pdf_a_convertir=os.path.join(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos",i)
-    primera_hoja=convert_from_path(path_pdf_a_convertir, first_page=0, last_page=0, poppler_path = poppler_path_local)
+    
+    # Para usuarios Linux
+    
+    # primera_hoja=convert_from_path(path_pdf_a_convertir, first_page=0, last_page=0)
+    
+    # Para usuarios windows
+    
+    # primera_hoja=convert_from_path(path_pdf_a_convertir, first_page=0, last_page=0, poppler_path = poppler_path_local)
+    
     i=re.sub(".pdf","",i)
     path_auxiliar=path_local+"/Salarios_Rosario/imagenes/"+i+".jpg"
     primera_hoja[0].save(path_auxiliar, 'JPEG')
@@ -198,25 +215,32 @@ for i in os.listdir(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos"):
 
 
 '''
-
 Aca se separa en 2 casos:
 Si "lista_mes" tiene el mismo mes en todas sus componentes procedo a extraer el mes de un pdf elegido
 de manera aleatoria de "carpeta_prueba" con el mismo pdf en la penultima carpeta
 (que son los datos mas actuales de momento).
-
+Tambien descomentar la linea que corresponda a su sistema operativo.
 '''
 
 if len(np.unique(np.array(lista_mes)))==1:
     numero_random=random.choice(range(17))
     pdf_viejo=list_folder[-2]
-    path_pdf_viejo=url_folder_pdf+"/"+pdf_viejo+"/"+(os.listdir(url_folder_pdf+"/"+pdf_viejo)[numero_random])
+    path_pdf_viejo=url_folder_pdf+"/"+pdf_viejo+"/"+natsorted(os.listdir(url_folder_pdf+"/"+pdf_viejo))[numero_random]
     pdf_nuevo=list_folder[-1]
-    path_pdf_nuevo=url_folder_pdf+"/"+pdf_nuevo+"/"+(os.listdir(url_folder_pdf+"/"+pdf_nuevo)[numero_random])
-    imagen_vieja=convert_from_path(path_pdf_viejo, poppler_path =poppler_path_local)
+    path_pdf_nuevo=url_folder_pdf+"/"+pdf_nuevo+"/"+natsorted(os.listdir(url_folder_pdf+"/"+pdf_nuevo))[numero_random]
+    
+    # Para usuarios Linux
+    
+    # imagen_vieja=convert_from_path(path_pdf_viejo)
+    
+    # Para usuarios Windows 
+    
+    # imagen_vieja=convert_from_path(path_pdf_viejo, poppler_path = poppler_path_local)
+    
     imagen_vieja[0].save(path_local+'/Salarios_Rosario/imagen_vieja.jpg', 'JPEG')
 
     imagen_vieja=Image.open(path_local+'/Salarios_Rosario/imagen_vieja.jpg')
-    imagen_nueva=Image.open(path_local+'/Salarios_Rosario/imagenes/'+os.listdir(path_local+"/Salarios_Rosario/imagenes")[numero_random])
+    imagen_nueva=Image.open(path_local+'/Salarios_Rosario/imagenes/'+natsorted(os.listdir(path_local+"/Salarios_Rosario/imagenes"))[numero_random])
 
     text_viejo=pytesseract.image_to_string(imagen_vieja)
     text_nuevo=pytesseract.image_to_string(imagen_nueva)
@@ -239,6 +263,7 @@ if len(np.unique(np.array(lista_mes)))==1:
             pass
 else:
     pass
+
 '''
 Esto es una idea para hacer un poco mas preciso el código pero no lo pense de momento
 Faltaria resolver esta parte que basicamente seria obtener cuales archivos son nuevos y cuales viejos
@@ -276,17 +301,12 @@ Aca paso el mes a número.
 Como el caso anterior, en el caso de que no este definida la variable mes_nuevo pasa el except
 '''
 
-translator=google_translator()
-
-try:
-    result=translator.translate(mes_nuevo,lang_src="es",lang_tgt="en")
-    traduccion=result.capitalize()
-    datetime_object=datetime.datetime.strptime(re.sub(" ","",traduccion),"%B")
-    mes_nuevo=str(datetime_object.month)
-    if len(mes_nuevo)==1:
-        mes_nuevo="0"+mes_nuevo
-except:
-    pass
+for i,j in enumerate(Meses):
+    if j == mes_nuevo:
+        numero_de_mes=i+1
+        mes_nuevo=str(numero_de_mes)
+if len(mes_nuevo)==1:
+    mes_nuevo="0"+mes_nuevo
 
 
 # In[ ]:
@@ -301,13 +321,13 @@ Actualizacion=str(date.today().strftime("%Y-%m-%d"))
 
 
 def make_archive(source, destination):
-        base = os.path.basename(destination)
-        name = base.split('.')[0]
-        format = base.split('.')[1]
-        archive_from = os.path.dirname(source)
-        archive_to = os.path.basename(source.strip(os.sep))
-        shutil.make_archive(name, format, archive_from, archive_to)
-        shutil.move('%s.%s'%(name,format), destination)
+    base = os.path.basename(destination)
+    name = base.split('.')[0]
+    format = base.split('.')[1]
+    archive_from = os.path.dirname(source)
+    archive_to = os.path.basename(source.strip(os.sep))
+    shutil.make_archive(name, format, archive_from, archive_to)
+    shutil.move('%s.%s'%(name,format), destination)
 
 
 # In[ ]:
@@ -333,29 +353,18 @@ Luego se borran las imagenes creadas.
 
 if cambio == True:
     os.rename(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos",os.path.join(path_local+"/Salarios_Rosario/pdf",ano_nuevo+"_"+ mes_nuevo + "_Sueldos"))
-    file=open(path_local+"/Seguimiento.txt","a")
-    file.write(f"\n{Actualizacion}: HUBO UN CAMBIO")
-    file.close()
+    with open(path_local+"/Seguimiento.txt","a") as f:    
+        f.write(f"\n{Actualizacion}: HUBO UN CAMBIO")
 elif cambio == False:
     shutil.rmtree(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos")
-    file=open(path_local+"/Seguimiento.txt","a")
-    file.write(f"\n{Actualizacion}: NO HUBO UN CAMBIO")
-    file.close()
+    with open(path_local+"/Seguimiento.txt","a") as f:
+        f.write(f"\n{Actualizacion}: NO HUBO UN CAMBIO")
 else:
     shutil.rmtree(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos")
-    file=open(path_local+"/Seguimiento.txt","a")
-    file.write(f"\n{Actualizacion}: Hubo un cambio de algunos archivos pero no se han cambiado todos")
-    file.close()
+    with open(path_local+"/Seguimiento.txt","a") as f:
+        f.write(f"\n{Actualizacion}: Hubo un cambio de algunos archivos pero no se han cambiado todos")
 
 make_archive(path_local, path_local+".zip")
-
-# Esta linea mueve el .zip creado a la carpeta donde tengo inicializado el repositorio
-# Si se clono el repositorio en otra maquina va a pasar directamente al except
-
-try:
-    shutil.remove(r"C:\Users\jorge\Proyectos\Proyectos Terminados\Fase_1\Gasto_Publico_Argentino_files.zip")
-except:
-    pass
 
 try:
     shutil.rmtree(path_local+"/Salarios_Rosario/imagenes")
@@ -364,29 +373,40 @@ except:
     pass
 
 
-# # Abro el archivo "Seguimiento.txt" para ver el resultado del proceso
-
-# In[ ]:
-
-
-os.startfile(path_local+"/Seguimiento.txt")
-
-
-# # Muevo "Gasto_Publico_Argentino_files.zip" con el archivo "Seguimiento.txt" actualizado
-
-# In[ ]:
-
-
-try:
-    shutil.move(path_local+".zip",r"C:\Users\jorge\Proyectos\Proyectos Terminados\Fase_1\Gasto_Publico_Argentino_files.zip")
-except:
-    pass
-
-
 # In[ ]:
 
 
 from datetime import datetime
+Finalizacion_programa=datetime.now()
 
-print("El código termino de correr a las :",datetime.now())
+from datetime import timedelta
+
+if cambio == True:
+    with open("path/keys_fase_1.json","r") as f:
+        loaded_keys=json.loads(f.read())
+    
+    tiempo=Finalizacion_programa-Inicio_programa
+
+    tiempo_medido=str(timedelta(seconds=tiempo.seconds))
+    
+    mail_content = '''Se publicaron los salarios del mes de %s de la Municipalidad de Rosario.\nEl proceso tardo aproximadamente %s
+    '''%(Meses[numero_de_mes-1].capitalize(),tiempo_medido)
+    #The mail addresses and password
+    sender_address = loaded_keys["sender_address"]
+    sender_pass = loaded_keys["sender_pass"]
+    receiver_address = loaded_keys["receiver_address"]
+    #Setup the MIME
+    message = MIMEMultipart()
+    message['From'] = sender_address
+    message['To'] = receiver_address
+    message['Subject'] = 'Notificaciones de salarios Municipales'   #The subject line
+    #The body and the attachments for the mail
+    message.attach(MIMEText(mail_content, 'plain'))
+    #Create SMTP session for sending the mail
+    session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
+    session.starttls() #enable security
+    session.login(sender_address, sender_pass) #login with mail_id and password
+    text = message.as_string()
+    session.sendmail(sender_address, receiver_address, text)
+    session.quit()
 
