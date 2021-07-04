@@ -3,7 +3,7 @@
 
 # # Fase 1
 
-# In[1]:
+# In[ ]:
 
 
 from datetime import datetime
@@ -12,7 +12,7 @@ Inicio_programa=datetime.now()
 
 # ### Importo los paquetes
 
-# In[2]:
+# In[ ]:
 
 
 import os # Funciones para interactuar con el sistema operativo
@@ -37,7 +37,7 @@ import json
 
 # ### Obtengo los url para la descarga
 
-# In[3]:
+# In[ ]:
 
 
 # La función URL recibe un url de tipo string y develve una variable soup.Entre sus atributos se
@@ -81,7 +81,7 @@ for i in range(0,len(tag_class)):
 
 # ### Pongo el path donde esta ubicado la carpeta "Gasto_Publico_Argentino_files"
 
-# In[4]:
+# In[ ]:
 
 
 # Se tiene que reemplazar por el path en tu maquina local
@@ -91,7 +91,7 @@ path_local="path/Gasto_Publico_Argentino_files"
 
 # ### Descarga de pdf's
 
-# In[5]:
+# In[ ]:
 
 
 '''
@@ -113,14 +113,14 @@ for url in lista_enlaces:
 
 # ### Veo cuantas carpetas de pdf tengo actualmente
 
-# In[6]:
+# In[ ]:
 
 
 url_folder_pdf=path_local+"/Salarios_Rosario/pdf"
 list_folder=natsorted(os.listdir(url_folder_pdf))
 
 
-# In[7]:
+# In[ ]:
 
 
 '''
@@ -133,7 +133,7 @@ for i in list_folder:
         list_folder.remove(i)
 
 
-# In[8]:
+# In[ ]:
 
 
 Meses=["ENERO",
@@ -353,7 +353,7 @@ Luego se borran las imagenes creadas.
 
 if cambio == True:
     os.rename(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos",os.path.join(path_local+"/Salarios_Rosario/pdf",ano_nuevo+"_"+ mes_nuevo + "_Sueldos"))
-    with open(path_local+"/Seguimiento.txt","a") as f:    
+    with open(path_local+"/Seguimiento.txt","a") as f:
         f.write(f"\n{Actualizacion}: HUBO UN CAMBIO")
 elif cambio == False:
     shutil.rmtree(path_local+"/Salarios_Rosario/pdf/carpeta_prueba_Sueldos")
@@ -387,9 +387,10 @@ if cambio == True:
     
     tiempo=Finalizacion_programa-Inicio_programa
 
-    tiempo_medido=str(timedelta(seconds=tiempo.seconds))
+    tiempo_medido=str(timedelta(seconds=tiempo.seconds))[2:]
     
-    mail_content = '''Se publicaron los salarios del mes de %s de la Municipalidad de Rosario.\nEl proceso tardo aproximadamente %s
+    mail_content = '''Se publicaron los salarios del mes de %s de la Municipalidad 
+    de Rosario.\nEl proceso tardo aproximadamente %s.
     '''%(Meses[numero_de_mes-1].capitalize(),tiempo_medido)
     #The mail addresses and password
     sender_address = loaded_keys["sender_address"]
