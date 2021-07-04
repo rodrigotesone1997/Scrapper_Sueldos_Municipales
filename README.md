@@ -38,7 +38,7 @@ Para mas información al respecto mirar https://www.geeksforgeeks.org/convert-pd
 
 #### 🐧 Usuarios Linux:
 
-Asi lo instale en Ubuntu 20.04 pero por lo que vi es similar en otras distros.</br>.
+Asi lo instale en Ubuntu 20.04 pero por lo que vi es similar en otras distros.</br>
 Se necesita instalar `tesseract-ocr` con el siguiente comando:
 ```
 apt-get install tesseract-ocr
