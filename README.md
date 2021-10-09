@@ -75,7 +75,8 @@ Informacion sobre la instalacion [aca](https://linuxhint.com/install-tesseract-o
 
 ## 🔮 Futuro del Proyecto
 
-Proximamente publicare un repositorio que seria la "Fase 2" del proyecto donde se crearia una carpeta donde se limpiarian los datos en pdf a archivos .xlsx
+Proximamente publicare un repositorio que seria la "Fase 2" del proyecto donde se crearia una carpeta donde se limpiarian los datos en pdf a archivos .xlsx.</br>
+UPDATE: Estoy re-escribiendo el proyecto en un pipe-line con airflow.
 
 ## ✉️ Contacto
 
