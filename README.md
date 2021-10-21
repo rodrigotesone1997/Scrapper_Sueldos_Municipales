@@ -8,9 +8,8 @@
   </a>
 </p>
 
-> El repositorio consta de un script que scrapea la pagina web de la [Municipalidad de Rosario](https://www.rosario.gob.ar/web/gobierno/personal/sueldos), descarga los pdf que contienen los sueldos dentro de ella, verifica si son iguales a la última actualización disponible en la carpeta pdf de este [archivo](Gasto_Publico_Argentino_files.zip).<br/>
-> En caso de que se actualizen se incorporan en una nueva carpeta con el siguiente formato: "Año_Mes_Sueldos".<br/>
-> Si hubo un cambio respecto a la ultima revision (es decir, si se agregaron nuevos documentos) me envia un mail notificandome.</br></br>
+> El repositorio consta de un script que scrapea la pagina web de la [Municipalidad de Rosario](https://www.rosario.gob.ar/web/gobierno/personal/sueldos), descarga los pdf que contienen los sueldos dentro de ella, verifica si los pdf contienen el año y la fecha que figuren en [este](ultimos_datos.dat) archivo.</br>
+> En caso de que haya nuevos archivos un bot de telegram me envia un mensaje como el siguiente notificandome:</br></br>
 
 ![Demo](Demo.jpeg)
 
@@ -68,10 +67,9 @@ Informacion sobre la instalacion [aca](https://linuxhint.com/install-tesseract-o
 
 1. (Opcional) Crear un entorno virtual `virtualenv` y activarlo.
 2. Instalar las depedencias `pip install -r requirements.txt`
-3. Descomprimir el [.zip](Gasto_Publico_Argentino_files.zip)
-4. Reemplazar el path de "Gasto_Publico_Argentino_files" dentro de la variable `path_local` del script [Fase_1.py](Fase_1.py)
-5. Revisar el código en caso de necesitar comentar algunas lineas (mas información comentada en el código)
-6. Por último, ejecutar [Fase_1.py](Fase_1.py)
+3. Reemplazar la variable `path_repositorio` con el path del repositorio clonado.
+4. Revisar el código en caso de necesitar comentar algunas lineas (mas información comentada en el código)
+5. Por último, ejecutar [app.py](app.py)
 
 ## 🔮 Futuro del Proyecto
 
@@ -86,9 +84,7 @@ Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail 
 
 👤 **Rodrigo Tesone**
 
-<!---* Website: xadec
--->
-* Twitter: [@rodrigotesone97](https://twitter.com/rodrigotesone97?s=08)
+* Twitter: [@rodrigotesone97](https://twitter.com/rodrigotesone97)
 * Github: [rodrigotesone1997](https://github.com/rodrigotesone1997)
 * LinkedIn: [rodrigo-tesone](https://linkedin.com/in/rodrigo-tesone)
 
