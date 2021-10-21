@@ -10,7 +10,7 @@ from PIL import Image # Función para manejo de imagenes
 import shutil # Funciones para interctuar con el sistema operativo que no tiene os
 import numpy as np # Funcionalidad para listas y matrices de una manera mas eficiente
 from natsort import natsorted # Funcionalidad para ordenar folder
-from aplicacion.variables import Meses,ultimo_anio,ultimo_mes,folder_pdf,folder_imagenes_provisorias,folder_imagenes_finales,path_repositorio
+from aplicacion.variables import Meses,ultimo_anio,ultimo_mes,folder_pdf,folder_imagenes_provisorias,folder_imagenes_finales,file,keys
 from aplicacion.telegrambot import *
 
 def URL(url):
@@ -44,14 +44,14 @@ def descarga_pdfs(enlaces):
 def creacion_imagenes():
 # Aca va cambio en el path
     try:
-        os.mkdir(folder_imagenes_provisorias)
-        os.mkdir(folder_imagenes_finales)
+        os.mkdir(f"{folder_imagenes_provisorias}")
+        os.mkdir(f"{folder_imagenes_finales}")
     except:
         pass
 
-    path_carpeta_prueba=os.listdir(folder_pdf)
+    archivos_carpeta_prueba=os.listdir(folder_pdf)
 
-    for nombre_archivo in path_carpeta_prueba:
+    for nombre_archivo in archivos_carpeta_prueba:
         path_pdf_a_convertir=os.path.join(folder_pdf,nombre_archivo)
 
         # Para usuarios Linux
@@ -64,7 +64,7 @@ def creacion_imagenes():
         nombre_archivo=nombre_archivo.replace(".pdf","")
         path_auxiliar=f"{folder_imagenes_provisorias}/{nombre_archivo}.jpg"
         primera_hoja[0].save(path_auxiliar, 'JPEG')
-    
+
     for nombre_archivo in os.listdir(folder_imagenes_provisorias):
 
         path_auxiliar=f"{folder_imagenes_provisorias}/{nombre_archivo}"
@@ -111,9 +111,9 @@ def obtencion_lista_mes():
 
     # Tambien descomentar la linea que corresponda a su sistema operativo para la variable primera_hoja.
 
-    path_carpeta_prueba=os.listdir(folder_imagenes_finales)
+    archivos_carpeta_prueba=os.listdir(folder_imagenes_finales)
 
-    for nombre_archivo in path_carpeta_prueba:
+    for nombre_archivo in archivos_carpeta_prueba:
 
         # Para usuarios windows
 
@@ -194,19 +194,19 @@ def estado_cambio(mes_nuevo,anio_nuevo,archivos_mezclados):
 def final(cambio,mes_nuevo,anio_nuevo,tiempo_medido):
 
     if cambio == True:
-        os.remove("{path_repositorio}ultimos_datos.dat")
+        os.remove(file)
 
         string='''{
 "ultimo_anio":"%s",
 "ultimo_mes":"%s"
 }'''%(anio_nuevo,mes_nuevo)
 
-        with open("{path_repositorio}ultimos_datos.dat","w") as f:
+        with open(file,"w") as f:
             f.write(string)
 
         tg=telegrambot
 
-        token_telegram,id_Rodrigo=tg.cargarLlaves("{path_repositorio}keys")
+        token_telegram,id_Rodrigo=tg.cargarLlaves(keys)
 
         mensaje_bot=f"Se publicaron los salarios del mes de {mes_nuevo.capitalize()} del año {anio_nuevo.capitalize()} de la Municipalidad  de Rosario\nEl proceso tardo aproximadamente {tiempo_medido}.\nRecorda descargarlos"
 
